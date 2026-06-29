@@ -218,7 +218,7 @@ bool Adafruit_SHT4x::getEvent(sensors_event_t *humidity,
   if (!i2c_dev->write(&cmd, 1)) {
     return false;
   }
-  delay(duration);
+  delay(duration + 2); // BW Allow an extra 2ms because the default is sometimes not quite enough, especially when WiFi is in use for some reason
   if (!i2c_dev->read(readbuffer, 6)) {
     return false;
   }
